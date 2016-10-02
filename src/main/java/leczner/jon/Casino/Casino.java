@@ -9,15 +9,19 @@ public class Casino {
     private WelcomeScreen welcomeScreen;
     private List<Player> players;
     private List<Game> games;
+    private Game activeGame;
     private boolean running;
 
     public Casino() {
-        running = true;
+        init();
     }
 
     public boolean isRunning() { return running; }
 
-    public void init() { return; }
+    public void init() {
+        running = true;
+        activeGame = welcomeScreen.selectOption();
+    }
 
     public void handleInput() {
         return;
