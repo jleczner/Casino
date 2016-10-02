@@ -1,15 +1,12 @@
 package leczner.jon.Casino;
 
-import java.util.List;
+import java.util.Stack;
 
 /**
  * Created by jonathanleczner on 10/2/16.
  */
 public class Casino {
-    private WelcomeScreen welcomeScreen;
-    private List<Player> players;
-    private List<Game> games;
-    private Game activeGame;
+    private Stack<State> states;
     private boolean running;
 
     public Casino() {
@@ -17,22 +14,31 @@ public class Casino {
     }
 
     public boolean isRunning() { return running; }
+    public Stack<State> getStates() {
+        return states;
+    }
 
     public void init() {
         running = true;
-        activeGame = welcomeScreen.selectOption();
+        State welcomeScreen = new WelcomeScreen();
+        states.push(welcomeScreen);
     }
 
     public void handleInput() {
-        return;
+        states.lastElement().handleInput();
     }
 
     public void update() {
-        return;
+        states.lastElement().update();
     }
 
-    public void render() { return; }
+    public void render() { states.lastElement().render(); }
 
-    public void run() { return; }
-
+    public void run() {
+        while (running) {
+            handleInput();
+            update();
+            render();
+        }
+    }
 }
