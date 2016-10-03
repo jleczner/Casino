@@ -5,12 +5,15 @@ package leczner.jon.Casino;
  */
 public class WelcomeScreen extends State {
     private InputHandler input;
-    private String output;
-    private final String greeting = "Welcome to Hell Casino! We pray on the weak! Please select a game: ";
+    private String inputString;
+    private String outputString;
+    private boolean prompted;
+    private Game choice;
+    private final String greeting = "Welcome to Hell Casino! We pray on the weak! Please select a game:\n";
     private final String options =
-            "(1) War" +
-            "(2) Blackjack" +
-            "(3) Slots";
+            "(1) War\n" +
+            "(2) Blackjack\n" +
+            "(3) Slots\n";
 
     public WelcomeScreen() {
         init();
@@ -19,37 +22,62 @@ public class WelcomeScreen extends State {
     @Override
     public void init() {
         input = new ScannerInputHandler();
+        inputString = "";
+        outputString = "";
         displayGreeting();
         displayOptions();
-        render();
+        prompted = false;
     }
 
     @Override
     public void handleInput() {
-        return;
+        if (prompted) {
+            inputString = input.getInput();
+        }
     }
 
     @Override
     public void update() {
-        return;
+        switch (inputString) {
+            case "1":
+                choice = selectOption(1);
+                break;
+            case "2":
+                choice = selectOption(2);
+                break;
+            case "3":
+                choice = selectOption(3);
+                break;
+            default:
+                break;
+        }
+
     }
 
     @Override
     public void render() {
-        System.out.println(output);
+        System.out.println(outputString);
+        prompted = true;
     }
-
-    public void run() {
-        return;
-    }
-
-    public Game selectOption() { return null; }
 
     public void displayGreeting() {
-        output += greeting;
+        outputString += greeting;
     }
 
     public void displayOptions() {
-        output += options;
+        outputString += options;
+    }
+
+    public Game selectOption(int option) {
+        switch (option) {
+            case 1:
+                return new War();
+            case 2:
+                return null;
+            case 3:
+                return null;
+            default: // shouldn't reach
+                return null;
+        }
     }
 }

@@ -21,6 +21,7 @@ public class ScannerInputHandler implements InputHandler {
 
     @Override
     public String getInput() {
-        return scanner.next();
+        input = scanner.next();
+        return input;
     }
 }

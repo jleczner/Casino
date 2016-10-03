@@ -6,7 +6,7 @@ import java.util.Stack;
  * Created by jonathanleczner on 10/2/16.
  */
 public class Casino {
-    private Stack<State> states;
+    private static Stack<State> states;
     private boolean running;
 
     public Casino() {
@@ -14,12 +14,12 @@ public class Casino {
     }
 
     public boolean isRunning() { return running; }
-    public Stack<State> getStates() {
-        return states;
-    }
+    public static Stack<State> getStates() { return states; }
+    public static void pushState(State s) { states.push(s); }
 
     public void init() {
         running = true;
+        states = new Stack<>();
         State welcomeScreen = new WelcomeScreen();
         states.push(welcomeScreen);
     }
