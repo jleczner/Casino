@@ -51,7 +51,9 @@ public class WelcomeScreen extends State {
             default:
                 break;
         }
-
+        if (choice != null) {
+            Casino.pushState(choice);
+        }
     }
 
     @Override

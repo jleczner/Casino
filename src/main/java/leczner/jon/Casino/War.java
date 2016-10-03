@@ -10,7 +10,7 @@ public class War extends Game {
 
     @Override
     public void init() {
-
+        System.out.println("hello there");
     }
 
     @Override
