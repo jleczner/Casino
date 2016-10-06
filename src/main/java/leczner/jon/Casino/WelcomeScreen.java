@@ -75,9 +75,9 @@ public class WelcomeScreen extends State {
             case 1:
                 return new War();
             case 2:
-                return null;
+                return new Blackjack();
             case 3:
-                return null;
+                return new Slots();
             default: // shouldn't reach
                 return null;
         }
