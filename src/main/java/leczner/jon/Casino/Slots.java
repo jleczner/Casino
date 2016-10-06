@@ -57,7 +57,7 @@ public class Slots extends Game {
         outputString = "";
         prompted = false;
         played = false;
-        slotValues = new String[3];
+        slotValues = new String[]{"7", "cherries", "bar"};
         winAmount = -1;
 
         displayStart();
