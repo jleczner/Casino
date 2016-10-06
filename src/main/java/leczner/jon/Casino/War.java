@@ -5,11 +5,11 @@ package leczner.jon.Casino;
  */
 public class War extends Game {
     public War() {
-        init();
+        init(new ScannerInputHandler());
     }
 
     @Override
-    public void init() {
+    public void init(InputHandler input) {
         System.out.println("hello there");
     }
 

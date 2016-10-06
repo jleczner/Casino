@@ -16,12 +16,12 @@ public class WelcomeScreen extends State {
             "(3) Slots\n";
 
     public WelcomeScreen() {
-        init();
+        init(new ScannerInputHandler());
     }
 
     @Override
-    public void init() {
-        input = new ScannerInputHandler();
+    public void init(InputHandler input) {
+        this.input = input;
         inputString = "";
         outputString = "";
         displayGreeting();

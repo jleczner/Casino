@@ -5,7 +5,7 @@ package leczner.jon.Casino;
  */
 public class Blackjack extends Game {
     @Override
-    public void init() {
+    public void init(InputHandler input) {
 
     }
 

@@ -15,17 +15,49 @@ public class Slots extends Game {
     private int winAmount;
 
     public Slots() {
-        init();
+        init(new ScannerInputHandler());
+    }
+
+    public Slots(InputHandler input) {
+        init(input);
+    }
+
+    public InputHandler getInput() {
+        return input;
+    }
+
+    public String getInputString() {
+        return inputString;
+    }
+
+    public String getOutputString() {
+        return outputString;
+    }
+
+    public boolean isPrompted() {
+        return prompted;
+    }
+
+    public boolean isPlayed() {
+        return played;
+    }
+
+    public String[] getSlotValues() {
+        return slotValues;
+    }
+
+    public int getWinAmount() {
+        return winAmount;
     }
 
     @Override
-    public void init() {
-        input = new ScannerInputHandler();
+    public void init(InputHandler input) {
+        this.input = input;
         inputString = "";
         outputString = "";
         prompted = false;
         played = false;
-        slotValues = new String[]{"7", "cherries", "bar"};
+        slotValues = new String[3];
         winAmount = -1;
 
         displayStart();
