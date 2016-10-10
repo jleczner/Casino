@@ -8,6 +8,8 @@ public class War extends Game {
         init(new ScannerInputHandler());
     }
 
+    public War(InputHandler input) { init(input); }
+
     @Override
     public void init(InputHandler input) {
         System.out.println("hello there");
