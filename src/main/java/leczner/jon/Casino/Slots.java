@@ -89,6 +89,8 @@ public class Slots extends Game {
         if (played) {
             determineWinnings();
             displayWinnings();
+            displayPlayerInfo();
+            displayEndPrompt();
             played = false;
         }
     }
@@ -104,7 +106,13 @@ public class Slots extends Game {
     private void displayStart() { outputString += greeting + options; }
     private void displaySlots() { outputString += slotValues[0] + " " + slotValues[1] + " " + slotValues[2]; }
     private void displayWinnings() { outputString += "You win $" + winAmount + "\n"; }
-    private void endPrompt() { outputString += "Would you like to keep playing?";}
+    private void displayEndPrompt() { outputString +=
+            "Continue?\n" +
+            "(1) Yes\n" +
+            "(2) No\n";
+    }
+    private void displayPlayerInfo() { outputString += Casino.player.displayPlayerInfo() + "\n"; }
+
 
     // auxiliary functions
     private String getRandomSlotValue() {
@@ -126,13 +134,13 @@ public class Slots extends Game {
         if (slotValues[0].equals(slotValues[1]) && slotValues[1].equals(slotValues[2])) {
             switch (slotValues[0]) {
                 case "7":
-                    winAmount = 1000;
+                    winAmount = 500;
                     break;
                 case "cherries":
-                    winAmount = 300;
+                    winAmount = 50;
                     break;
                 case "bar":
-                    winAmount = 500;
+                    winAmount = 100;
                     break;
                 default:
                     break;
