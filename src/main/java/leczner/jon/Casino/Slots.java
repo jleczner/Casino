@@ -81,7 +81,10 @@ public class Slots extends Game {
     @Override
     public void update() {
         if (inputString != null) {
-            playOrQuit();
+            if (!played) {
+                playOrQuit();
+                return;
+            }
         }
         if (played) {
             determineWinnings();
@@ -93,13 +96,15 @@ public class Slots extends Game {
     @Override
     public void render() {
         System.out.println(outputString);
+        outputString = "";
         prompted = true;
     }
 
     // display functions
-    private void displayStart() { outputString = greeting + options; }
-    private void displaySlots() { outputString = slotValues[0] + " " + slotValues[1] + " " + slotValues[2]; }
-    private void displayWinnings() { outputString = "You win $" + winAmount; }
+    private void displayStart() { outputString += greeting + options; }
+    private void displaySlots() { outputString += slotValues[0] + " " + slotValues[1] + " " + slotValues[2]; }
+    private void displayWinnings() { outputString += "You win $" + winAmount + "\n"; }
+    private void endPrompt() { outputString += "Would you like to keep playing?";}
 
     // auxiliary functions
     private String getRandomSlotValue() {

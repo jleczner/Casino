@@ -21,4 +21,8 @@ public class Player {
     public void updateBalance(int amount) {
         money += amount;
     }
+
+    public String displayPlayerInfo() {
+        return name + "\n" + "Balance: $" + money + "\n";
+    }
 }
