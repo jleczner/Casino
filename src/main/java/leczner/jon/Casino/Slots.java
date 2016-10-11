@@ -14,6 +14,12 @@ public class Slots extends Game {
     private String[] slotValues;
     private int winAmount;
 
+    private final String greeting = "Welcome to Slots! Please select an option.\n";
+    private final String options =
+            "(1) Play\n" +
+            "(2) Quit\n";
+
+
     public Slots() {
         init(new ScannerInputHandler());
     }
@@ -50,6 +56,8 @@ public class Slots extends Game {
         return winAmount;
     }
 
+
+    // main functions
     @Override
     public void init(InputHandler input) {
         this.input = input;
@@ -73,12 +81,7 @@ public class Slots extends Game {
     @Override
     public void update() {
         if (inputString != null) {
-            if (!played) {
-                playSlots();
-                displaySlots();
-                played = true;
-                return;
-            }
+            playOrQuit();
         }
         if (played) {
             determineWinnings();
@@ -93,11 +96,12 @@ public class Slots extends Game {
         prompted = true;
     }
 
-    private void displayStart() { outputString = "Welcome to Slots! Type 'start' to play."; }
+    // display functions
+    private void displayStart() { outputString = greeting + options; }
     private void displaySlots() { outputString = slotValues[0] + " " + slotValues[1] + " " + slotValues[2]; }
     private void displayWinnings() { outputString = "You win $" + winAmount; }
 
-
+    // auxiliary functions
     private String getRandomSlotValue() {
         Random r = new Random();
         return getSlotValue(r.nextInt(slotValues.length));
@@ -131,5 +135,24 @@ public class Slots extends Game {
         } else {
             winAmount = 0;
         }
+    }
+
+    private void playOrQuit() {
+        switch (inputString) {
+            case "1":
+                playSlots();
+                displaySlots();
+                played = true;
+                break;
+            case "2":
+                quit();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void quit() {
+        Casino.popState();
     }
 }

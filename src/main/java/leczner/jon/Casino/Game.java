@@ -4,7 +4,6 @@ package leczner.jon.Casino;
  * Created by jonathanleczner on 10/2/16.
  */
 public abstract class Game extends State {
-    private String name;
     private int numOfPlayers;
     private boolean running;
     private InputHandler input;

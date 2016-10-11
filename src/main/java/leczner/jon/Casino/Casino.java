@@ -16,6 +16,7 @@ public class Casino {
     public boolean isRunning() { return running; }
     public static Stack<State> getStates() { return states; }
     public static void pushState(State s) { states.push(s); }
+    public static void popState() { states.pop(); }
 
     public void init() {
         running = true;

@@ -9,6 +9,8 @@ public class WarTest {
     War w = new War(new DummyInputHandler());
 
     @Test
-    public void
+    public void initTest() {
+
+    }
 
 }

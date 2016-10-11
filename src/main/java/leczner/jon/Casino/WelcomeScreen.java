@@ -8,8 +8,9 @@ public class WelcomeScreen extends State {
     private String inputString;
     private String outputString;
     private boolean prompted;
+    private boolean playerCreated;
     private Game choice;
-    private final String greeting = "Welcome to Hell Casino! We pray on the weak! Please select a game:\n";
+    private final String greeting = "Welcome to Hell Casino! We pray on the weak! Enter name:\n";
     private final String options =
             "(1) War\n" +
             "(2) Blackjack\n" +
@@ -25,8 +26,8 @@ public class WelcomeScreen extends State {
         inputString = "";
         outputString = "";
         displayGreeting();
-        displayOptions();
         prompted = false;
+        playerCreated = false;
     }
 
     @Override
