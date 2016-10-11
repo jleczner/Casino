@@ -5,7 +5,7 @@ package leczner.jon.Casino;
  */
 public class Player {
     private String name;
-    private double money;
+    private int money;
 
     public Player(String name) {
         this.name = name;
@@ -15,10 +15,10 @@ public class Player {
     public String getName() {
         return name;
     }
-    public double getMoney() {
+    public int getMoney() {
         return money;
     }
-    public void updateBalance(double amount) {
+    public void updateBalance(int amount) {
         money += amount;
     }
 }
