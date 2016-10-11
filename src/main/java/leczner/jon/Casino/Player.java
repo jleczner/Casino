@@ -7,20 +7,18 @@ public class Player {
     private String name;
     private double money;
 
-    public Player(String name, double money) {
+    public Player(String name) {
         this.name = name;
-        this.money = money;
+        money = 0;
     }
 
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public double getMoney() {
         return money;
+    }
+    public void updateBalance(double amount) {
+        money += amount;
     }
 }

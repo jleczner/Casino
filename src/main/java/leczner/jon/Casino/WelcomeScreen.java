@@ -11,6 +11,11 @@ public class WelcomeScreen extends State {
     private boolean playerCreated;
     private Game choice;
     private final String greeting = "Welcome to Hell Casino! We pray on the weak! Enter name:\n";
+    private final String difficulty =
+            "Choose difficulty:\n" +
+            "(1) Easy - $500\n" +
+            "(2) Normal - $250\n" +
+            "(3) Hard - $100\n";
     private final String options =
             "(1) War\n" +
             "(2) Blackjack\n" +
@@ -39,22 +44,35 @@ public class WelcomeScreen extends State {
 
     @Override
     public void update() {
-        switch (inputString) {
-            case "1":
-                choice = selectOption(1);
-                break;
-            case "2":
-                choice = selectOption(2);
-                break;
-            case "3":
-                choice = selectOption(3);
-                break;
-            default:
-                break;
+        if (playerCreated) {
+            chooseGame();
+            switch (inputString) {
+                case "1":
+                    choice = selectOption(1);
+                    break;
+                case "2":
+                    choice = selectOption(2);
+                    break;
+                case "3":
+                    choice = selectOption(3);
+                    break;
+                default:
+                    break;
+            }
+            if (choice != null) {
+                Casino.pushState(choice);
+            }
+        } else {
+            createPlayer();
         }
-        if (choice != null) {
-            Casino.pushState(choice);
-        }
+    }
+
+    private void createPlayer() {
+        Player p = new Player(inputString);
+    }
+
+    private void chooseGame() {
+
     }
 
     @Override
